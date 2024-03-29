@@ -1,0 +1,15 @@
+server:
+  port: 8080
+datasource:
+  driverName: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: chat
+  username: root
+  password: 123456
+  charset: utf8mb4
+  loc: Asia/Shanghai
+errors:
+  userNotFound:
+    message: user not found
+    code: 1001
