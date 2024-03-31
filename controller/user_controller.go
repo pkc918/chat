@@ -6,6 +6,7 @@ import (
 	"github.com/pkc918/chat/dto"
 	"github.com/pkc918/chat/response"
 	"github.com/pkc918/chat/service"
+	"github.com/pkc918/chat/validator"
 	"net/http"
 )
 
@@ -17,6 +18,11 @@ func SignUp(c *gin.Context) {
 	account := &dto.SignUpDTO{}
 	if err := c.BindJSON(account); err != nil {
 		response.FailWithResponse(c, response.ErrParameterIsInvalid)
+		return
+	}
+
+	if err := validator.Validator(account); err != nil {
+		response.FailWithResponse(c, err)
 		return
 	}
 
