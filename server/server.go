@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/pkc918/chat/config"
+	"github.com/pkc918/chat/db"
 	"github.com/pkc918/chat/router"
 	"github.com/spf13/viper"
 )
@@ -19,7 +20,12 @@ func initGin() {
 	_ = r.Run(port)
 }
 
+func initDb() {
+	db.InitDb()
+}
+
 func InitServer() {
 	initConfig()
+	initDb()
 	initGin()
 }
