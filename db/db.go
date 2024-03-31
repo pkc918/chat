@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	model "github.com/pkc918/chat/model/client"
+	"github.com/pkc918/chat/model"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

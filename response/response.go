@@ -13,11 +13,12 @@ func Response(ctx *gin.Context, message string, data any, status int, code int) 
 	})
 }
 
-func FialWithResponse(ctx *gin.Context, err error) {
+func FailWithResponse(ctx *gin.Context, err error) {
 	if customErr, ok := err.(*Exception); ok {
 		resultBody := gin.H{
 			"code":    customErr.Code(),
 			"message": customErr.Error(),
+			"data":    nil,
 		}
 		if len(customErr.ErrorMessage()) != 0 {
 			resultBody["errors"] = customErr.ErrorMessage()
@@ -25,7 +26,7 @@ func FialWithResponse(ctx *gin.Context, err error) {
 		ctx.JSON(customErr.Status(), resultBody)
 		return
 	}
-	FialWithResponse(ctx, ErrInternalServer)
+	FailWithResponse(ctx, ErrInternalServer)
 }
 
 func OkWithResponse(ctx *gin.Context, data any) {
