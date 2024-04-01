@@ -52,7 +52,7 @@ const (
 	//
 	UserRegisterFailedCode
 	//
-	PasswordIncrrectCode
+	PasswordIncorrectCode
 	//
 	RecordNotExitsCode
 	//
@@ -83,7 +83,7 @@ var ErrUserAlreadyExists = NewException("Errors.UserAlreadyExists", http.StatusB
 
 var ErrUserRegisterFailed = NewException("Errors.UserRegisterFailed", http.StatusBadRequest, UserRegisterFailedCode)
 
-var ErrPasswordIncrrect = NewException("Errors.PasswordIncrrect", http.StatusBadRequest, PasswordIncrrectCode)
+var ErrPasswordIncorrect = NewException("Errors.PasswordIncorrect", http.StatusBadRequest, PasswordIncorrectCode)
 
 var ErrRecordNotExits = NewException("Errors.RecordNotExits", http.StatusNotFound, RecordNotExitsCode)
 
