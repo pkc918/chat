@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/pkc918/chat/dto"
 	"github.com/pkc918/chat/response"
@@ -35,5 +34,22 @@ func SignUp(c *gin.Context) {
 }
 
 func SignIn(c *gin.Context) {
-	fmt.Println("登录")
+	account := &dto.SignInDTO{}
+	if err := c.BindJSON(account); err != nil {
+		response.FailWithResponse(c, response.ErrParameterIsInvalid)
+	}
+
+	_account, err := service.SignIn(account)
+	if err != nil {
+		response.FailWithResponse(c, err)
+		return
+	}
+
+	signedAccessToken, err := service.CreateJWTToken(_account)
+	if err != nil {
+		response.FailWithResponse(c, err)
+		return
+	}
+
+	response.OkWithResponse(c, signedAccessToken)
 }

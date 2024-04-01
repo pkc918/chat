@@ -21,3 +21,12 @@ func CreateAccount(dto *dto.SignUpDTO) (*model.Account, error) {
 	}
 	return account, nil
 }
+
+func GetAccount(dto *dto.SignInDTO) (*model.Account, error) {
+	account := &model.Account{}
+	err := db.DB.Model(&model.Account{}).Where("email = ?", dto.Email).First(account).Error
+	if err != nil {
+		return nil, err
+	}
+	return account, nil
+}
