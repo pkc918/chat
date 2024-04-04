@@ -49,7 +49,7 @@ func InitDb() {
 }
 
 func initAutoMigrate(db *gorm.DB) {
-	err := db.AutoMigrate(&model.Account{})
+	err := db.AutoMigrate(&model.Account{}, &model.FriendShip{})
 
 	if err != nil {
 		panic(fmt.Sprintf("fail to automigrate table, err: %s", err.Error()))
