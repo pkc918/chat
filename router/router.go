@@ -19,6 +19,7 @@ func InitRouter(r *gin.Engine) *gin.Engine {
 	v1 := client.Group("/v1")
 	v1.Use(middleware.JWTTokenValid())
 	v1.GET("/friendList", controller.GetFriendList)
+	v1.GET("/ws", controller.ConnectWs)
 
 	// admin
 	admin := api.Group("/admin")

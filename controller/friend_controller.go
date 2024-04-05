@@ -19,3 +19,7 @@ func GetFriendList(c *gin.Context) {
 	}
 	response.OkWithResponse(c, friendList)
 }
+
+func AddFriend(c *gin.Context) {
+
+}

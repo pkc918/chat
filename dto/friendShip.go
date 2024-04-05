@@ -1,10 +1,14 @@
 package dto
 
 import (
-	"github.com/pkc918/chat/model"
+	"github.com/google/uuid"
+	"time"
 )
 
 type FriendItemDTO struct {
-	model.Account
-	Status byte
+	CreatedAt time.Time
+	Uid       uuid.UUID
+	Email     string
+	Avatar    string
+	Status    byte
 }
