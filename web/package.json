@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vue-router": "4"
   },
   "devDependencies": {
+    "@types/node": "^20.12.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.2.2",
     "unocss": "^0.59.0",
