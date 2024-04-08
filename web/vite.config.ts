@@ -8,8 +8,7 @@ export default defineConfig({
   plugins: [vue(), UnoCSS()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@component": path.resolve(__dirname, "./src/components")
+      "@": path.resolve(__dirname, "./src")
     }
   }
 })
