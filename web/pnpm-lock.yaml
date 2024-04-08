@@ -16,9 +16,15 @@ dependencies:
     version: 4.3.0(vue@3.4.21)
 
 devDependencies:
+  '@iconify-json/ph':
+    specifier: ^1.1.12
+    version: 1.1.12
   '@types/node':
     specifier: ^20.12.5
     version: 20.12.5
+  '@unocss/preset-icons':
+    specifier: ^0.59.0
+    version: 0.59.0
   '@vitejs/plugin-vue':
     specifier: ^5.0.4
     version: 5.0.4(vite@5.1.6)(vue@3.4.21)
@@ -580,6 +586,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@iconify-json/ph@1.1.12:
+    resolution: {integrity: sha512-m+rXTW084YaQQHT+F8TxdkCoAh+i/5MWRoSuPmxCWPlxwMAaLT/QfyVsbEiV95HM5806U/jKpBV6F1b7Pmr3Vg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
