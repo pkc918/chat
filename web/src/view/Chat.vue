@@ -12,7 +12,7 @@ import UserItem from "@/components/Chat/UserItem.vue";
         <div class="w-6.5 h-6.5 bg-blue"></div>
       </div>
       <div>
-        <UserItem></UserItem>
+        <UserItem :is-top-sticky="true"></UserItem>
         <UserItem></UserItem>
         <UserItem></UserItem>
         <UserItem></UserItem>
