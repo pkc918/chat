@@ -23,6 +23,3 @@ go.work
 # editor
 .idea
 .vscode
-
-#custom
-application.yaml
