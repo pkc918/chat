@@ -14,6 +14,6 @@ email:
   host: smtp.qq.com
   port: 465
   from: 2489964425@qq.com
-  subject: WeChat-Plus 验证码
-  password: 你的qq邮箱授权码
+  subject: WeChat-Plus验证码
+  password: 你的QQ邮箱授权码
   serverName: smtp.qq.com
