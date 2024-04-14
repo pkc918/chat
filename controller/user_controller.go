@@ -1,10 +1,12 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/pkc918/chat/dto"
 	"github.com/pkc918/chat/response"
 	"github.com/pkc918/chat/service"
+	"github.com/pkc918/chat/utils"
 	"github.com/pkc918/chat/validator"
 	"net/http"
 )
@@ -52,4 +54,13 @@ func SignIn(c *gin.Context) {
 	}
 
 	response.OkWithResponse(c, signedAccessToken)
+}
+
+func SendCode(c *gin.Context) {
+	toEmailAccount := c.Query("email")
+	if err := utils.SendCodeByQQEmail(toEmailAccount); err != nil {
+		fmt.Println(err)
+		response.FailWithResponse(c, err)
+		return
+	}
 }
