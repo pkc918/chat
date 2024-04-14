@@ -9,3 +9,4 @@ export const useUserStore = defineStore("userStore", () => {
 
     return { count, increment }
 })
+
