@@ -8,9 +8,13 @@ export default defineConfig({
         presetIcons({
             extraProperties: {
                 "display": "inline-block",
-                'vertical-align': 'middle',
+                'vertical-align': 'middle'
             }
         }),
-        presetUno(),
+        presetUno()
+
+    ],
+    rules: [
+        ["login-bg", {"background-image": 'url("https://w.wallhaven.cc/full/jx/wallhaven-jxl31y.png")', "background-repeat": "no-repeat"}]
     ]
 })
