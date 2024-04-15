@@ -36,6 +36,7 @@ const routesHashMapList: routesItem[] = [{
 
 const activePath = ref<string>("")
 const handleToRoute = (pathName: string) => {
+  console.log(pathName)
   activePath.value = pathName
   router.push({name: pathName})
 }
@@ -45,6 +46,9 @@ onMounted(() => {
 </script>
 
 <template>
+<!-- unocss 识别icon，不然无法动态icon  -->
+  <div v-if="false" class="i-ph-acorn-duotone i-ph-android-logo-duotone i-ph-codesandbox-logo-duotone i-ph-aperture-duotone i-ph-battery-charging-vertical-duotone i-ph-cloud-duotone i-ph-calendar-dots-duotone i-ph-dots-three-circle-duotone"></div>
+
   <div class="w-16 bg-[#CFD6DA] flex flex-col items-center justify-between">
     <div class="w-12 pt-17 flex flex-col items-center gap-8">
       <img class="w-12 h-12 rd-2" src="https://avatars.githubusercontent.com/u/58922004?v=4" alt="" />
