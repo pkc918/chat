@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from "vue";
 
+const activeKey = ref("2");
 </script>
 
 <template>
@@ -10,12 +12,21 @@
       <div class="w-50% p-5">
         <div class="i-ph-alien-fill text-[#57bf6b] w-100% h-100%"></div>
       </div>
-      <div class="w-50% p-5">
-        <div></div>
-        <div class="flex flex-col">
-          <input placeholder="请输入邮箱" />
-          <input placeholder="请输入密码" />
-          <button>登录</button>
+      <div class="w-50% p-10 flex flex-col">
+        <div class="">
+          <a-tabs v-model:activeKey="activeKey" type="card">
+            <a-tab-pane key="1" tab="登录"></a-tab-pane>
+            <a-tab-pane key="2" tab="注册"></a-tab-pane>
+          </a-tabs>
+        </div>
+        <div class="flex-1 flex flex-col justify-between gap-5">
+          <div class="flex flex-col gap-5">
+            <a-input class="h-10" placeholder="input email"/>
+            <a-input-password class="h-10"
+                              placeholder="input password"
+            />
+          </div>
+          <a-button class="h-10" type="primary">登录</a-button>
         </div>
       </div>
     </div>
