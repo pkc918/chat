@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
 
 const activeKey = ref("2");
 
@@ -7,10 +10,6 @@ const validateMessages = {
   required: "${label} is required!",
   types: {
     email: "it is not a valid email!",
-    number: "${label} is not a valid number!",
-  },
-  number: {
-    range: "${label} must be between ${min} and ${max}",
   },
 };
 
@@ -30,6 +29,7 @@ const formState = reactive<{ user: Query }>({
 
 const handleLogIn = () => {
   console.log(formState.user);
+  router.push(({name: "Chat"}))
 };
 </script>
 
@@ -49,17 +49,16 @@ const handleLogIn = () => {
           </a-tabs>
         </div>
         <div class="flex-1 flex flex-col justify-between gap-5">
-          <div class="flex-1 flex flex-col gap-5">
+          <div class="flex-1 flex flex-col">
             <a-form
-                class="h-full flex flex-col gap-5"
+                class="h-full flex flex-col"
                 :validate-messages="validateMessages"
                 :model="formState"
             >
               <a-form-item :name="['user', 'email']" :rules="[{ required: true, type: 'email' }]">
                 <a-input class="h-10" v-model:value="formState.user.email" placeholder="input email"/>
               </a-form-item>
-
-              <a-form-item :name="['user', 'captcha']" :rules="[{ required: true, type: 'number', min: 6, max: 6 }]">
+              <a-form-item :name="['user', 'captcha']">
                 <a-input-search
                     v-model:value="formState.user.captcha"
                     placeholder="input captcha"
@@ -70,16 +69,15 @@ const handleLogIn = () => {
                   </template>
                 </a-input-search>
               </a-form-item>
-
-              <a-form-item :name="['user', 'email']" :rules="[{ required: true, type: 'email' }]">
+              <a-form-item :name="['user', 'password']">
                 <a-input-password class="h-10"
                                   v-model:value="formState.user.password"
                                   placeholder="input password"
                 />
               </a-form-item>
+              <a-button class="h-10 mt-5" type="primary" @click="handleLogIn">登录</a-button>
             </a-form>
           </div>
-          <a-button class="h-10" type="primary" @click="handleLogIn">登录</a-button>
         </div>
       </div>
     </div>
