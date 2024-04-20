@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
+import { post } from "@/reuqest/request.ts";
 
 const router = useRouter()
 
-const activeKey = ref("2");
+const activeKey = ref<"1" | "2">("1");
+
+const btnText = computed(() => {
+  return activeKey.value === "1" ? "登录" : "注册";
+});
 
 const validateMessages = {
   required: "${label} is required!",
@@ -27,9 +32,28 @@ const formState = reactive<{ user: Query }>({
   },
 });
 
-const handleLogIn = () => {
+const clickMap = {
+  "1": () => {
+    handleLogIn();
+  },
+  "2": () => {
+
+  }
+};
+
+const handleLogIn = async () => {
   console.log(formState.user);
-  router.push(({name: "Chat"}))
+  try {
+    const res = await post("/api/client/signIn", {email: "22@qq.com", password: "1234567890"});
+    console.log(res);
+    await router.push(({name: "Chat"}));
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const handleClick = () => {
+  clickMap[activeKey.value]?.();
 };
 </script>
 
@@ -75,7 +99,7 @@ const handleLogIn = () => {
                                   placeholder="input password"
                 />
               </a-form-item>
-              <a-button class="h-10 mt-5" type="primary" @click="handleLogIn">登录</a-button>
+              <a-button class="h-10 mt-5" type="primary" @click="handleClick">{{ btnText }}</a-button>
             </a-form>
           </div>
         </div>

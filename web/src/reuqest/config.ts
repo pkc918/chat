@@ -1,10 +1,7 @@
 import { InterceptorMethodType } from "./types";
 
 export const serverConfig = {
-    baseURL:
-        import.meta.env.VITE_ENV === "production"
-            ? import.meta.env.VITE_BASE_URL
-            : "",
+    baseURL: "",
     timeout: 5000,
     withCredentials: false,
     useTokenAuthorization: false,
