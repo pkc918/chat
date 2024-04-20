@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { RouteRecordName, useRouter } from "vue-router";
+import { useLocalRoute } from "@/store/useLoacalRoute.ts";
 
 const router = useRouter()
 
@@ -34,7 +35,8 @@ const routesHashMapList: routesItem[] = [{
   pathName: "Setting"
 }]
 
-const activePath = ref<string>("")
+const activeRoute = useLocalRoute();
+const activePath = ref<RouteRecordName>("")
 const handleToRoute = (pathName: string) => {
   console.log(pathName)
   activePath.value = pathName
@@ -42,6 +44,7 @@ const handleToRoute = (pathName: string) => {
 }
 
 onMounted(() => {
+  activePath.value = activeRoute.routeName;
 })
 </script>
 
