@@ -1,12 +1,16 @@
 import { RouteRecordRaw } from "vue-router";
 
 export const routes: RouteRecordRaw[] = [{
-    path: "/logIn",
-    name: "LogIn",
-    component: () => import("@/view/LogIn.vue")
-},{
+    path: "/",
+    redirect: {
+        name: "Page"
+    }
+}, {
     path: "/page",
     name: "Page",
+    redirect: {
+        name: "Chat"
+    },
     component: () => import("@/components/Page/Page.vue"),
     children: [{
         path: "chat",
@@ -41,4 +45,8 @@ export const routes: RouteRecordRaw[] = [{
         name: "Setting",
         component: () => import("@/view/Setting.vue")
     }]
-}]
+}, {
+    path: "/logIn",
+    name: "LogIn",
+    component: () => import("@/view/LogIn.vue")
+}];
