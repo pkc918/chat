@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Layout from "@/components/Layout/Layout.vue";
-import UserItem from "@/components/Chat/UserItem.vue";
+import UserItem from "@/components/Chat/ChatItem.vue";
 import ChatContent from "@/components/Chat/ChatContent.vue";
 
 
