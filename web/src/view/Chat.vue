@@ -18,7 +18,7 @@ const handleToChat = (id: string) => {
     <template #left>
       <div class="flex items-center justify-center gap-3 h-15">
         <input class="w-52 h-6.5" />
-        <div class="w-6.5 h-6.5 bg-blue"></div>
+        <div class="w-6 h-6 cursor-pointer i-ph-first-aid-bold"></div>
       </div>
       <div>
         <UserItem :is-top-sticky="topStickyGroup.includes(item.toString())"
