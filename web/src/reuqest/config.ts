@@ -11,6 +11,7 @@ export const serverConfig = {
 export const requestInterceptor: InterceptorMethodType = (config: any) => {
     console.log("request", config);
     config.headers.tenantId = "1";
+    config.headers["authorization"] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzOGQ2NTliLWFjZWMtNDE4YS1hMGY3LTJhNGJlYzY4OGM2YiIsImVtYWlsIjoiMjJAcXEuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY3ODkwIiwiZXhwIjoxNzE1MDQyOTc1LCJpYXQiOjE3MTQ5NTY1NzV9.PfNC4EP2q8TWqo_MG7hRDNBcXvQvzsnyAcSNnRhP-uc"
     return config;
 };
 

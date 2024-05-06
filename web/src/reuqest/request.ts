@@ -31,16 +31,16 @@ serviceAxios.interceptors.response.use(
     }
 );
 
-const post = (url: string, data?: any) => {
-    return serviceAxios({
+const post = <T>(url: string, data?: any) => {
+    return serviceAxios<T>({
         url,
         data,
         method: "post",
     });
 };
 
-const get = (url: string, params?: any) => {
-    return serviceAxios({
+const get = <T>(url: string, params?: any) => {
+    return serviceAxios<T>({
         url,
         params,
         method: "get",

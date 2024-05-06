@@ -1,5 +1,5 @@
 import { get } from "@/reuqest/request.ts";
 
-const getFriend = () => {
-    return get("/client/v1/friendList")
+export const getFriend = <T>() => {
+    return get<T>("/api/client/v1/friendList")
 }
