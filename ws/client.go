@@ -2,9 +2,11 @@ package ws
 
 import (
 	"bytes"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 	"log"
+	"net/http"
 	"time"
 )
 
@@ -30,6 +32,9 @@ var (
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
 }
 
 // Client is a middleman between the websocket connection and the hub.
@@ -67,6 +72,8 @@ func (c *Client) readPump() {
 			break
 		}
 		message = bytes.TrimSpace(bytes.Replace(message, newline, space, -1))
+		fmt.Println("read: ", message)
+
 		c.hub.broadcast <- message
 	}
 }
@@ -97,6 +104,7 @@ func (c *Client) writePump() {
 				return
 			}
 			w.Write(message)
+			fmt.Println("write: ", message)
 
 			// Add queued chat messages to the current websocket message.
 			n := len(c.send)
@@ -120,6 +128,7 @@ func (c *Client) writePump() {
 // ServeWs handles websocket requests from the peer.
 func ServeWs(hub *Hub, c *gin.Context) {
 	id := c.Query("id")
+	fmt.Println(id)
 	conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		log.Println(err)
