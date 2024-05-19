@@ -6,3 +6,13 @@ export interface FRIEND {
     Avatar: string;
     Status: number;
 }
+
+// 渲染消息体结构
+export type MSG_TYPE = "message" | "img" | "video" | "audio"
+
+export interface MSG {
+    from: string;
+    to: string;
+    type: MSG_TYPE;
+    data: any;
+}
