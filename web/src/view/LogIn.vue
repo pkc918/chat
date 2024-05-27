@@ -2,7 +2,9 @@
 import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { post } from "@/reuqest/request.ts";
+import { useUserStore } from "@/store/userStore.ts";
 
+const userStore = useUserStore();
 const router = useRouter()
 
 const activeKey = ref<"1" | "2">("1");
@@ -44,8 +46,13 @@ const clickMap = {
 const handleLogIn = async () => {
   console.log(formState.user);
   try {
-    const res = await post("/api/client/signIn", {email: "22@qq.com", password: "1234567890"});
-    console.log(res);
+    const res = await post<{ data: string }>("/api/client/signIn", {
+      email: formState.user.email,
+      password: formState.user.password
+    });
+    console.log("token", res.data.data);
+
+    userStore.setToken(res.data.data);
     await router.push(({name: "Chat"}));
   } catch (e) {
     console.error(e);

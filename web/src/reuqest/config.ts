@@ -1,4 +1,5 @@
 import { InterceptorMethodType } from "./types";
+import { useUserStore } from "@/store/userStore.ts";
 
 export const serverConfig = {
     baseURL: "",
@@ -11,7 +12,7 @@ export const serverConfig = {
 export const requestInterceptor: InterceptorMethodType = (config: any) => {
     console.log("request", config);
     config.headers.tenantId = "1";
-    config.headers["authorization"] = "eyJhbGciOiJIUzI1NiIsIkDt4-p7YaOxcZvX67406E6xnx8U0gnR5cCI6IkpXVCJ9.eyJpZCI6IjMzOGQ2NTliLWFjZWMtNDE4YS1hMGY3LTJhNGJlYzY4OGM2YiIsImVtYWlsIjoiMjJAcXEuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY3ODkwIiwiZXhwIjoxNzE2MTgyODI5LCJpYXQiOjE3MTYwOTY0Mjl9.7D8tkYfwISY8zs"
+    config.headers["authorization"] = useUserStore().token;
     return config;
 };
 
@@ -24,7 +25,7 @@ export const requestInterceptorError: InterceptorMethodType = (err: any) => {
 // 响应拦截器
 export const responseInterceptor: InterceptorMethodType = (res: any) => {
     console.log("response", res);
-    return res.data;
+    return res;
 };
 
 // 响应错误拦截器

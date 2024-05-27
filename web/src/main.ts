@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { pinia } from "@/store";
+import pinia from "@/store";
 import router from "@/router/router.ts";
 import Antd from 'ant-design-vue';
 

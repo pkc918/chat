@@ -18,8 +18,8 @@ socket.addEventListener("open", () => {
 
 socket.addEventListener("message", (event) => {
   msgList.value.push({
-    from: "1",
-    to: "2",
+    from: localStorage.getItem("id")!,
+    to: localStorage.getItem("id") === '1' ? '2' : '1',
     type: "message",
     data: event.data
   });
@@ -50,7 +50,7 @@ const handleToSendMsg = () => {
     </div>
     <div class="i-ph-dots-three-circle-duotone text-8"></div>
   </header>
-  <main class="flex-1 p-5">
+  <main class="flex-1 p-5 flex flex-col gap-4">
     <Msg v-for="msg in msgList" :data="msg"/>
   </main>
   <div class="w-full h-65 flex flex-col border-t-1 border-t-[#E0E0E0] border-t-solid px-5">
